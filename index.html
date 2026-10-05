@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Smart Factory Gateway Monitor — gateway monitoring and telemetry management console.">
+  <title>Smart Factory Gateway Monitor</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="taskbar" aria-label="Application taskbar">
+    <button class="start-button bevel-raised" id="startButton" aria-expanded="false" aria-controls="startMenu"><span class="start-mark" aria-hidden="true">▣</span><b>Start</b></button>
+    <button class="quick-button" data-view="dashboard" aria-label="Open dashboard" title="Dashboard">⌂</button>
+    <div class="task-current bevel-sunken"><span aria-hidden="true">▣</span><span id="taskCurrent">Gateway Monitor</span></div>
+    <div class="tray">
+      <span class="tray-icon bevel-sunken" title="Gateway connection active">◉</span>
+      <span class="tray-icon bevel-sunken" title="System status">▥</span>
+      <time id="taskClock" class="clock bevel-sunken" aria-label="Current time">--:--</time>
+    </div>
+  </header>
+
+  <nav class="start-menu bevel-raised" id="startMenu" aria-label="Application menu" hidden>
+    <div class="menu-banner"><span>Smart Factory</span></div>
+    <div class="menu-items">
+      <button data-view="dashboard"><span>▦</span> Dashboard</button>
+      <button data-view="devices"><span>▤</span> Devices</button>
+      <button data-view="network"><span>⌘</span> Network</button>
+      <button data-view="logs"><span>▧</span> Logs</button>
+      <button data-view="alerts"><span>⚑</span> Alerts</button>
+      <button data-view="diagnostics"><span>▣</span> Diagnostics</button>
+      <hr>
+      <button data-view="about"><span>ⓘ</span> About</button>
+    </div>
+  </nav>
+
+  <main class="application bevel-raised">
+    <div class="titlebar">
+      <div class="window-title"><span aria-hidden="true">▣</span><span>Smart Factory Gateway Monitor</span></div>
+      <div class="window-controls">
+        <button class="window-control" id="minimizeButton" aria-label="Minimize">_</button>
+        <button class="window-control" id="maximizeButton" aria-label="Toggle maximize">□</button>
+        <button class="window-control" id="closeButton" aria-label="Close">×</button>
+      </div>
+    </div>
+    <div class="menubar" aria-label="Application commands">
+      <button data-message="File commands are not available.">File</button>
+      <button data-message="Edit commands are not available.">Edit</button>
+      <button data-message="View commands are not available.">View</button>
+      <button data-message="Tools are available as local interface examples only.">Tools</button>
+      <button data-view="about">Help</button>
+    </div>
+    <div class="toolbar" aria-label="Toolbar">
+      <button class="tool-button" id="backButton" title="Back"><span>◀</span><small>Back</small></button>
+      <button class="tool-button" id="forwardButton" title="Forward"><span>▶</span><small>Forward</small></button>
+      <button class="tool-button" id="refreshButton" title="Refresh"><span>↻</span><small>Refresh</small></button>
+      <span class="toolbar-divider"></span>
+      <button class="tool-button" data-view="dashboard" title="Home"><span>⌂</span><small>Home</small></button>
+      <button class="tool-button" data-view="logs" title="Search logs"><span>⌕</span><small>Search</small></button>
+      <button class="tool-button" data-message="Print service is not configured." title="Print"><span>▤</span><small>Print</small></button>
+    </div>
+    <form class="addressbar" id="addressForm">
+      <label for="addressField">Address</label>
+      <div class="address-field bevel-sunken" id="addressField" aria-label="Gateway address"><span aria-hidden="true">▣</span><span>factory-monitor://gateway/</span></div>
+      <button class="classic-button" type="submit">Go</button>
+    </form>
+    <nav class="view-tabs" aria-label="Main navigation">
+      <button data-view="dashboard" class="active">Dashboard</button>
+      <button data-view="devices">Devices</button>
+      <button data-view="network">Network</button>
+      <button data-view="logs">Logs</button>
+      <button data-view="alerts">Alerts</button>
+      <button data-view="diagnostics">Diagnostics</button>
+    </nav>
+
+    <div class="work-area">
+      <aside class="tree-pane bevel-sunken" aria-label="Navigation tree">
+        <div class="pane-caption">Factory Console</div>
+        <div class="tree-root"><span>⊟</span> ▣ SMART-FACTORY</div>
+        <button class="tree-item selected" data-view="dashboard"><span>├─</span> Dashboard</button>
+        <button class="tree-item" data-view="devices"><span>├─</span> Device Registry</button>
+        <button class="tree-item" data-view="network"><span>├─</span> Network Map</button>
+        <button class="tree-item" data-view="logs"><span>├─</span> System Logs</button>
+        <button class="tree-item" data-view="alerts"><span>├─</span> Alert Center</button>
+        <button class="tree-item" data-view="diagnostics"><span>└─</span> Diagnostics</button>
+        <div class="tree-note"><span class="led"></span> Gateway active<br><span class="small-muted">Monitoring service ready</span></div>
+      </aside>
+      <section class="content-pane bevel-sunken" id="contentPane" aria-live="polite" tabindex="-1"></section>
+    </div>
+
+    <footer class="statusbar">
+      <div class="status-segment status-ready" id="statusReady">Ready</div>
+      <div class="status-segment">Connection: ACTIVE</div>
+      <div class="status-segment">System: READY</div>
+      <div class="status-segment status-time" id="statusClock">--:--:--</div>
+    </footer>
+  </main>
+  <div class="dialog-layer" id="dialogLayer" hidden></div>
+  <noscript><div class="noscript">Enable JavaScript to use Gateway Monitor.</div></noscript>
+</body>
+</html>
