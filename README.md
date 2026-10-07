@@ -15,9 +15,9 @@ Open `index.html` in a modern browser. The interface and all interactions run in
 
 ## Data and archive customization
 
-The editable configuration is at the top of `script.js`: `FACTORY_NAME`, `GATEWAY_LABEL`, `DEVICE_LIST`, `ALERT_LIST`, and `EVENT_TEMPLATES`. `ARCHIVE_RECORDS` expands the event templates into 15 dated records; adjust the generator length and date logic if you change the archive size. Record filters search timestamp, event ID, source, category, severity, description, status, diagnostic code, and archive reference.
+The editable configuration is at the top of `script.js`: `FACTORY_NAME`, `GATEWAY_LABEL`, `DEVICE_LIST`, `ALERT_LIST`, and `EVENT_TEMPLATES`. `ARCHIVE_RECORDS` expands the event templates into 30 dated records; adjust the generator length and date logic if you change the archive size. Record filters search timestamp, event ID, source, category, severity, description, status, diagnostic code, and archive reference.
 
-The historical diagnostic record is the entry at index 14 (event ID `009184`). Its reference is represented in three separate encoded archive properties and assembled by `resolveArchiveReference()` when its detail panel opens. The detail is inserted with `textContent` through DOM nodes.
+The historical diagnostic record is the 16th entry (event ID `009184`). Its reference is represented in three separate encoded archive properties and assembled by `resolveArchiveReference()` when its detail panel opens. The detail is inserted with `textContent` through DOM nodes.
 
 The reference is client-side data and cannot be considered cryptographically secret from someone inspecting browser code. The encoding only keeps the complete value out of the initial page source and data object.
 

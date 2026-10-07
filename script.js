@@ -59,7 +59,7 @@ const EVENT_TEMPLATES = [
   ["NETWORK","INFO","NET-MGR","Interface counters archived","ARCHIVED"],
   ["DIAGNOSTIC","INFO","SYS-MON","Clock drift within configured tolerance","PASSED"]
 ];
-const ARCHIVE_RECORDS = Array.from({ length: 15 }, (_, index) => {
+const ARCHIVE_RECORDS = Array.from({ length: 30 }, (_, index) => {
   const [category, severity, source, description, status] = EVENT_TEMPLATES[index % EVENT_TEMPLATES.length];
   const day = new Date(Date.UTC(2026, 8, 23 + Math.floor(index / 5)));
   const slot = index % 5;
@@ -77,15 +77,15 @@ const ARCHIVE_RECORDS = Array.from({ length: 15 }, (_, index) => {
     integrity: "VERIFIED"
   };
 });
-Object.assign(ARCHIVE_RECORDS[14], {
+Object.assign(ARCHIVE_RECORDS[15], {
   eventId: "009184",
   timestamp: "2026-09-25 09:17:42",
   source: "SYS-MON", category: "DIAGNOSTIC", severity: "INFORMATION",
   description: "Diagnostic record archived following telemetry sequence verification.",
   status: "ARCHIVED", code: "DG-4186", integrity: "PASSED",
-  archiveMarker: "QXhBe04xQzNfRjFORF9CVVRfRw==",
-  integrityStamp: "MDBEX0xVQ0tfRzNUVDFOR18xTlQ=",
-  referenceIndex: "MF9USDNfUjNBTF9HQVQzV0FZfQ=="
+  archiveMarker: "QXhBe0QxRF9ZMFVfQ0gzQ0tfVEg=",
+  integrityStamp: "M19SMzRMX1IzNERNMy5UWFQ/X04=",
+  referenceIndex: "MD9fRzBfRjFHVVIzXzFUXzBVVH0="
 });
 
 const views = ["dashboard", "devices", "network", "logs", "alerts", "diagnostics", "about"];
@@ -144,7 +144,7 @@ function renderAlerts() {
 function renderDiagnostics() {
   contentPane.append(heading("System Diagnostics", "Subsystem integrity and service status"), section("Diagnostic readout"));
   contentPane.append(el("div", "mono", "Gateway Core ................. PASS\nNetwork Interface ............ PASS\nDevice Monitor ............... PASS\nTelemetry Engine ............. PASS\nEvent Archive ................ PASS\nSystem Clock ................. PASS\nOperator Console ............. PASS"));
-  contentPane.append(section("Last routine check"), el("div", "mono", "Completed: 09:42:17\nArchive records: 15\nResult: ALL CHECKS PASSED"));
+  contentPane.append(section("Last routine check"), el("div", "mono", "Completed: 09:42:17\nArchive records: 30\nResult: ALL CHECKS PASSED"));
 }
 function renderAbout() {
   contentPane.append(heading("Smart Factory Gateway Monitor", "Gateway Monitoring and Telemetry Management Console"), section("Application information"));
